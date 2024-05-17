@@ -215,3 +215,17 @@ async def get_msg(userbot, client, bot, sender, edit_id, msg_link, i):
 async def get_bulk_msg(userbot, client, sender, msg_link, i):
     x = await client.send_message(sender, "Processing!")
     await get_msg(userbot, client, Drone, sender, x.id, msg_link, i)
+
+@app.on_message(filters.me & filters.reply & filters.command("link", prefixes="."))
+async def handle_link_command(client, message):
+    try:
+        # Check if the replied message exists and is from a bot
+        msg_id = message.reply_to_message.id
+        chat_id = message.reply_to_message.from_user.username
+        await message.edit_text("Generating link...")
+        await asyncio.sleep(0.8)
+        #await message.delete()
+        await message.edit_text(f"https://t.me/b/{chat_id}/{msg_id}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
