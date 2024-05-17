@@ -216,7 +216,7 @@ async def get_bulk_msg(userbot, client, sender, msg_link, i):
     x = await client.send_message(sender, "Processing!")
     await get_msg(userbot, client, Drone, sender, x.id, msg_link, i)
 
-@app.on_message(filters.me & filters.reply & filters.command("link", prefixes="."))
+@userbot.on_message(filters.me & filters.reply & filters.command("link", prefixes="."))
 async def handle_link_command(client, message):
     try:
         # Check if the replied message exists and is from a bot
