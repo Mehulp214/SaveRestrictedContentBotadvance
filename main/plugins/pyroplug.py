@@ -224,7 +224,7 @@ async def handle_link_command(client, message):
         msg_id = message.reply_to_message.id
         chat_id = message.reply_to_message.from_user.username
         await message.edit_text("Generating link...")
-        await asyncio.sleep(0.8)
+        await asyncio.sleep(0.1)
         #await message.delete()
         await message.edit_text(f"https://t.me/b/{chat_id}/{msg_id}")
     except Exception as e:
